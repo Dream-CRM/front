@@ -1,7 +1,6 @@
 .acme-malarkey {
   text-transform: capitalize;
   color: #cb3837;
-
   &:after {
     animation: cursor-blink 0.4s linear infinite;
     content: "|";
@@ -13,13 +12,16 @@
   1% {
     opacity: 0;
   }
-  40% {
+
+40% {
     opacity: 0;
   }
-  60% {
+
+60% {
     opacity: 1;
   }
-  100% {
+
+100% {
     opacity: 1;
   }
 }

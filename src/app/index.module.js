@@ -1,7 +1,7 @@
 (function() {
-  'use strict';
+	'use strict';
 
-  angular
-    .module('dreamCrm', ['ngAnimate', 'ngCookies', 'ngSanitize', 'restangular', 'ui.router', 'ui.bootstrap']);
+	angular
+		.module('dreamCrm', ['ngAnimate', 'ngCookies', 'ngSanitize', 'restangular', 'ui.router', 'ui.bootstrap']);
 
 })();
