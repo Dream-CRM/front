@@ -2,6 +2,6 @@
 	'use strict';
 
 	angular
-		.module('dreamCrm', ['ngAnimate', 'ngCookies', 'ngSanitize', 'restangular', 'ui.router', 'ui.bootstrap']);
+		.module('dreamCrm', ['ngAnimate', 'ngCookies', 'ngSanitize', 'restangular', 'ui.router', 'ui.bootstrap', 'underscore']);
 
 })();

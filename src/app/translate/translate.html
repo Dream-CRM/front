@@ -1,0 +1,96 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" data-ng-model="searchText">
+                </div>
+                <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+            </form>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form name="form" role="form" data-ng-submit="addItem(form)">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Key</th>
+                        <th>English</th>
+                        <th>Russian</th>
+                        <th style="width: 10%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            New
+                        </td>
+                        <td>
+                            <input class="form-control" name="key" data-ng-model="model.key" required="">
+                        </td>
+                        <td>
+                            <input class="form-control" name="en-EN" data-ng-model="model['en-EN']" required="">
+                        </td>
+                        <td>
+                            <input class="form-control" name="ru-RU" data-ng-model="model['ru-RU']" required="">
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success">
+                                + Add
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-ng-repeat="el in testArray | filter:searchText">
+                        <td data-ng-bind="$index + 1"></td>
+                        <td>
+                            <span data-ng-if="!el.isEdit" data-ng-bind="el.key"></span>
+                            <input class="form-control" data-ng-if="el.isEdit" data-ng-model="el.key">
+                        </td>
+                        <td>
+                            <span data-ng-if="!el.isEdit" data-ng-bind="el['en-EN']"></span>
+                            <input class="form-control" data-ng-if="el.isEdit" data-ng-model="el['en-EN']">
+                        </td>
+                        <td>
+                            <span data-ng-if="!el.isEdit" data-ng-bind="el['ru-RU']"></span>
+                            <input class="form-control" data-ng-if="el.isEdit" data-ng-model="el['ru-RU']">
+                        </td>
+                        <td>
+                            <button class="btn btn-warning" type="button"
+                                    data-ng-if="!el.isEdit"
+                                    data-ng-click="changeMode(el, true)">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger" type="button"
+                                    data-ng-if="!el.isEdit"
+                                    data-ng-click="removeElement(el);">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                            <button class="btn btn-success" type="button"
+                                    data-ng-if="el.isEdit"
+                                    data-ng-click="changeMode(el, false)">
+                                Save
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

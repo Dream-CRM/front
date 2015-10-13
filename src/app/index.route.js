@@ -20,12 +20,27 @@
 			// 	controller: 'ContactsController',
 			// 	controllerAs: 'contacts'
 			// })
+			.state('translate', {
+				url: '/translate',
+				templateUrl: 'app/translate/translate.html',
+				controller: 'TranslateController',
+				controllerAs: 'translate',
+				access: [1]
+			})
 			.state('signup', {
 				url: '/signup',
 				templateUrl: 'app/signup/signup.html',
 				controller: 'SignupController',
-				controllerAs: 'signup'
+				controllerAs: 'signup',
+				access: [1, 2]
 			});
+
+			/* TODO Add access to documentation*/
+			// User access-levels:
+			// 0: Nothing
+			// 1: Admin
+			// 2: User
+
 
 		$urlRouterProvider.otherwise('signup');
 		$locationProvider.html5Mode(true);
