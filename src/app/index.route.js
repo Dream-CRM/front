@@ -33,6 +33,13 @@
 				controller: 'SignupController',
 				controllerAs: 'signup',
 				access: [1, 2]
+			})
+			.state('signin', {
+				url: '/signin',
+				templateUrl: 'app/signin/signin.html',
+				controller: 'SigninController',
+				controllerAs: 'signin',
+				access: [1, 2]
 			});
 
 			/* TODO Add access to documentation*/

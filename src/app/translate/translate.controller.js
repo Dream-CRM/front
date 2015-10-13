@@ -11,8 +11,8 @@
 		$scope.testArray = [];
 		$scope.model = {};
 
-		$scope.changeMode = function(el, bool) {
-			el.isEdit = bool;
+		$scope.changeMode = function(el, status) {
+			el.isEdit = status;
 		};
 
 		$scope.addItem = function(model) {
@@ -26,7 +26,7 @@
 			var idx = $scope.testArray.indexOf(element);
 			$scope.testArray.splice(idx, 1);
 		};
-		
+
 		function fillArray() {
 			for(var i = 0; i < 10; i++) {
 				$scope.testArray.push({
