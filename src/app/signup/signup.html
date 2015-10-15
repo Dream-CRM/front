@@ -5,7 +5,7 @@
                 <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left">Please signup</h3>
                     <h3 class="panel-title pull-right">
-                        <a data-ui-sref="login" data-translate="routes.signUp.login"></a>
+                         <a data-ui-sref="signin">Login</a>
                     </h3>
                 </div>
                 <div class="panel-body" data-ng-if="!vm.sendingSuccess">
@@ -19,32 +19,82 @@
                                        autofocus=""
                                        required=""
                                        maxlength="100"
+                                       data-ng-disabled="vm.isSendingRequest"
                                        placeholder="Email"
                                        data-ng-model="model.email" />
                                 <div class="has-error" data-ng-if="form.email.$error.email && form.$submitted">
-                                    <span class="help-block">Email is not correct</span>
+                                    <span class="help-block">Not correct Email</span>
                                 </div>
                                 <div class="has-error" data-ng-if="form.email.$error.required && form.$submitted">
-                                    <span class="help-block">Email is required</span>
+                                    <span class="help-block">Required email</span>
                                 </div>
                             </div>
+
+                            <div class="form-group" data-ng-class="{'has-error':form.company.$invalid && form.$submitted, 'has-success':form.company.$valid && form.$dirty}">
+                                <input class="form-control"
+                                       id="company"
+                                       name="company"
+                                       type="text"
+                                       required=""
+                                       maxlength="50"
+                                       data-ng-disabled="vm.isSendingRequest"
+                                       placeholder="Company name"
+                                       data-ng-model="model.company" />
+                                <div class="has-error" data-ng-if="form.company.$error.required && form.$submitted">
+                                    <span class="help-block">Required company name</span>
+                                </div>
+                            </div>
+
                             <div class="form-group" data-ng-class="{'has-error':form.password.$invalid && form.$submitted, 'has-success':form.password.$valid && form.$dirty}">
                                 <input class="form-control"
                                        id="password"
                                        name="password"
                                        type="password"
+                                       value=""
                                        required=""
-                                       maxlength="100"
+                                       maxlength="10"
+                                       data-ng-minlength="6"
+                                       data-ng-disabled="vm.isSendingRequest"
                                        placeholder="Password"
                                        data-ng-model="model.password" />
-                                <div class="has-error" data-ng-if="form.password.$error.password && form.$submitted">
-                                    <span class="help-block">Password is not correct</span>
+                                <div class="has-error" data-ng-if="form.password.$error.minlength && form.$submitted">
+                                    <span class="help-block">Not correct password</span>
                                 </div>
                                 <div class="has-error" data-ng-if="form.password.$error.required && form.$submitted">
-                                    <span class="help-block">Password is required</span>
+                                    <span class="help-block">Required password</span>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-lg btn-success btn-block" data-ng-disabled="vm.isSendingRequest">Submit</button>
+
+                            <div class="form-group" data-ng-class="{'has-error':form.facebook.$invalid && form.$submitted, 'has-success':form.facebook.$valid && form.$dirty && form.$submitted}">
+                                <input class="form-control"
+                                       id="facebook"
+                                       name="facebook"
+                                       type="text"
+                                       maxlength="50"
+                                       data-ng-disabled="vm.isSendingRequest"
+                                       placeholder="Facebook link"
+                                       data-ng-model="model.facebook" />
+                                <div class="has-error" data-ng-if="form.facebook.$error.required && form.$submitted">
+                                    <span class="help-block">Facebook</span>
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <select class="form-control"
+                                        id="industry"
+                                        name="industry"
+                                        data-ng-model="model.enterpriseIndustry"
+                                        data-ng-disabled="vm.loader.enterprise_industries || vm.isSendingRequest"
+                                        data-ng-options="item.id as item.name for item in vm.dicts.enterpriseIndustries">
+                                    <option value="" data-translate="routes.signUp.industry"></option>
+                                </select>
+                            </div> -->
+
+                            <p class="text-center text-danger" data-ng-if="vm.errorMessage">
+                                {{vm.errorMessage}}
+                            </p>
+
+                            <button type="submit" class="btn btn-lg btn-success btn-block" data-ng-disabled="vm.isSendingRequest" >Submit</button>
                         </fieldset>
                     </form>
                 </div>

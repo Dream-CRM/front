@@ -32,14 +32,14 @@
 				templateUrl: 'app/signup/signup.html',
 				controller: 'SignupController',
 				controllerAs: 'signup',
-				access: [1, 2]
+				access: [3]
 			})
 			.state('signin', {
 				url: '/signin',
 				templateUrl: 'app/signin/signin.html',
 				controller: 'SigninController',
 				controllerAs: 'signin',
-				access: [1, 2]
+				access: [3]
 			});
 
 			/* TODO Add access to documentation*/
@@ -47,9 +47,10 @@
 			// 0: Nothing
 			// 1: Admin
 			// 2: User
+			// 3: Guest
 
 
-		$urlRouterProvider.otherwise('signup');
+		$urlRouterProvider.otherwise('signin');
 		$locationProvider.html5Mode(true);
 	}
 

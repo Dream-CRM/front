@@ -6,7 +6,12 @@
 		.controller('SignupController', SignupController);
 
 	/** @ngInject */
-	function SignupController() {
-        
+	function SignupController($scope) {
+		$scope.model = {};
+		$scope.vm = {};
+
+        $scope.signUp = function(form) {
+			console.log(form);
+		};
 	}
 })();
